@@ -32,6 +32,7 @@ public class PayDay {
         }
 
         System.out.println(outputReport.toString());
+
     }
 
 
@@ -43,7 +44,13 @@ public class PayDay {
      * @return a string of the form "Kris 215.00 10.75 204.25”
      */
     public String pay(String n, double rate, double worked, double deduct) {
-        return null;
+        String result;
+
+        double grossPay = rate * worked;
+        double deduction = grossPay * deduct;
+        double netPay =  grossPay - deduction;
+
+        return String.format("%s %.2f %.2f %.2f",n,grossPay,worked,netPay);
     }
 
 
@@ -84,7 +91,7 @@ public class PayDay {
 
     public TimeCard[] createRunData() {
         TimeCard[] cards = {
-                new TimeCard("Kris", 21.5, 10.0, 0.05),
+                new TimeCard("Kris", 21.5, 10.00, 0.05),
                 new TimeCard("Dolio", 23.0, 12.0, 0.05),
                 new TimeCard("Karen", 22.0, 12.0, 0.05),
         };
